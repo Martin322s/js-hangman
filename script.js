@@ -26,7 +26,7 @@ let options = {
     ],
 };
 
-count
+
 let winCount = 0;
 let count = 0;
 let chosenWord = "";
@@ -43,9 +43,11 @@ const displayOptions = () => {
 const blocker = () => {
     let optionsButtons = document.querySelectorAll(".options");
     let letterButtons = document.querySelectorAll(".letters");
+
     optionsButtons.forEach((button) => {
         button.disabled = true;
     });
+
 
     letterButtons.forEach((button) => {
         button.disabled.true;
@@ -55,6 +57,7 @@ const blocker = () => {
 
 const generateWord = (optionValue) => {
     let optionsButtons = document.querySelectorAll(".options");
+
     optionsButtons.forEach((button) => {
         if (button.innerText.toLowerCase() === optionValue) {
             button.classList.add("active");
@@ -66,10 +69,10 @@ const generateWord = (optionValue) => {
     userInputSection.innerText = "";
 
     let optionArray = options[optionValue];
-    let displayItem = chosenWord.replace(/./g, '<span class="dashes">_</span>');
-
     chosenWord = optionArray[Math.floor(Math.random() * optionArray.length)];
     chosenWord = chosenWord.toUpperCase();
+
+    let displayItem = chosenWord.replace(/./g, '<span class="dashes">_</span>');
     userInputSection.innerHTML = displayItem;
 };
 
@@ -87,7 +90,6 @@ const initializer = () => {
         let button = document.createElement("button");
         button.classList.add("letters");
         button.innerText = String.fromCharCode(i);
-
         button.addEventListener("click", () => {
             let charArray = chosenWord.split("");
             let dashes = document.getElementsByClassName("dashes");
@@ -121,8 +123,8 @@ const initializer = () => {
         letterContainer.append(button);
     }
 
-    let { initialDrawing } = canvasCreator();
     displayOptions();
+    let { initialDrawing } = canvasCreator();
     initialDrawing();
 };
 
@@ -168,7 +170,7 @@ const canvasCreator = () => {
         context.clearRect(0, 0, context.canvas.width, context.canvas.height);
         drawLine(10, 130, 130, 130);
         drawLine(10, 10, 10, 131);
-        drawLine(10, 10, 70, 10); e
+        drawLine(10, 10, 70, 10);
         drawLine(70, 10, 70, 20);
     };
 
