@@ -57,14 +57,34 @@ const displayOptions = () => {
 const blocker = () => {
     let optionsButtons = document.querySelectorAll(".options");
     let letterButtons = document.querySelectorAll(".letters");
-    //disable all options
+
     optionsButtons.forEach((button) => {
         button.disabled = true;
     });
 
-    //disable all letters
     letterButtons.forEach((button) => {
         button.disabled.true;
     });
     newGameContainer.classList.remove("hide");
+};
+
+const generateWord = (optionValue) => {
+    let optionsButtons = document.querySelectorAll(".options");
+
+    optionsButtons.forEach((button) => {
+        if (button.innerText.toLowerCase() === optionValue) {
+            button.classList.add("active");
+        }
+        button.disabled = true;
+    });
+
+    letterContainer.classList.remove("hide");
+    userInputSection.innerText = "";
+
+    let optionArray = options[optionValue];
+    let displayItem = chosenWord.replace(/./g, '<span class="dashes">_</span>');
+
+    chosenWord = optionArray[Math.floor(Math.random() * optionArray.length)];
+    chosenWord = chosenWord.toUpperCase();
+    userInputSection.innerHTML = displayItem;
 };
