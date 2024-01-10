@@ -15,14 +15,7 @@ let options = {
         "Pomegranate",
         "Watermelon",
     ],
-    animals: [
-        "Hedgehog",
-        "Rhinoceros",
-        "Squirrel",
-        "Panther",
-        "Walrus",
-        "Zebra"
-    ],
+    animals: ["Hedgehog", "Rhinoceros", "Squirrel", "Panther", "Walrus", "Zebra"],
     countries: [
         "India",
         "Hungary",
@@ -30,9 +23,10 @@ let options = {
         "Switzerland",
         "Zimbabwe",
         "Dominica",
-    ]
+    ],
 };
 
+count
 let winCount = 0;
 let count = 0;
 let chosenWord = "";
@@ -41,23 +35,14 @@ const displayOptions = () => {
     optionsContainer.innerHTML += `<h3>Please Select An Option</h3>`;
     let buttonCon = document.createElement("div");
     for (let value in options) {
-        // buttonCon.innerHTML += `<button class="options" onclick="generateWord('${value}')">${value}</button>`;
-        let button = document.createElement('button');
-        button.classList.add('options');
-        button.textContent = value;
-        button.addEventListener('click', generateWord(value));
-        buttonCon.appendChild(button);
+        buttonCon.innerHTML += `<button class="options" onclick="generateWord('${value}')">${value}</button>`;
     }
-
-    console.log(buttonCon);
-
     optionsContainer.appendChild(buttonCon);
 };
 
 const blocker = () => {
     let optionsButtons = document.querySelectorAll(".options");
     let letterButtons = document.querySelectorAll(".letters");
-
     optionsButtons.forEach((button) => {
         button.disabled = true;
     });
@@ -70,7 +55,6 @@ const blocker = () => {
 
 const generateWord = (optionValue) => {
     let optionsButtons = document.querySelectorAll(".options");
-
     optionsButtons.forEach((button) => {
         if (button.innerText.toLowerCase() === optionValue) {
             button.classList.add("active");
@@ -103,6 +87,7 @@ const initializer = () => {
         let button = document.createElement("button");
         button.classList.add("letters");
         button.innerText = String.fromCharCode(i);
+
         button.addEventListener("click", () => {
             let charArray = chosenWord.split("");
             let dashes = document.getElementsByClassName("dashes");
@@ -136,8 +121,8 @@ const initializer = () => {
         letterContainer.append(button);
     }
 
-    displayOptions();
     let { initialDrawing } = canvasCreator();
+    displayOptions();
     initialDrawing();
 };
 
@@ -146,7 +131,7 @@ const canvasCreator = () => {
     context.beginPath();
     context.strokeStyle = "#000";
     context.lineWidth = 2;
-    
+
     const drawLine = (fromX, fromY, toX, toY) => {
         context.moveTo(fromX, fromY);
         context.lineTo(toX, toY);
@@ -183,7 +168,7 @@ const canvasCreator = () => {
         context.clearRect(0, 0, context.canvas.width, context.canvas.height);
         drawLine(10, 130, 130, 130);
         drawLine(10, 10, 10, 131);
-        drawLine(10, 10, 70, 10);
+        drawLine(10, 10, 70, 10); e
         drawLine(70, 10, 70, 20);
     };
 
